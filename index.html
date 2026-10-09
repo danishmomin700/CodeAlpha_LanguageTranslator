@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>LANGUAGE TRANSLATOR – Smart Language Translator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+
+    <a href="#" class="brand">
+      <span class="brand-icon">文</span>
+
+      <span>
+        <strong>LANGUAGE TRANSLATOR</strong>
+        <small>Smart Language Translator</small>
+      </span>
+    </a>
+
+    <nav class="header-actions">
+
+      <button class="header-btn" id="historyBtn">
+        ◷ History
+      </button>
+
+      <button class="header-btn" id="favoritesBtn">
+        ★ Favorites
+      </button>
+
+      <button class="icon-btn" id="themeToggle">
+        <span id="themeIcon">☾</span>
+      </button>
+
+    </nav>
+
+  </div>
+</header>
+
+
+<main class="container">
+
+  <section class="hero">
+
+    <div>
+      <p class="eyebrow">FAST • SIMPLE • MULTILINGUAL</p>
+
+      <h1>Translate without limits.</h1>
+
+      <p class="hero-copy">
+        Type, speak, listen, save and revisit your translations
+        in one clean workspace.
+      </p>
+    </div>
+
+    <div class="hero-badge">
+      20+ languages
+    </div>
+
+  </section>
+
+
+  <section class="translator-card">
+
+    <!-- LANGUAGE SELECTION -->
+
+    <div class="language-row">
+
+      <div class="language-field">
+        <label for="sourceLanguage">
+          Translate from
+        </label>
+
+        <select id="sourceLanguage"></select>
+      </div>
+
+
+      <button
+        class="swap-btn"
+        id="swapBtn"
+        title="Swap languages"
+      >
+        ⇄
+      </button>
+
+
+      <div class="language-field">
+
+        <label for="targetLanguage">
+          Translate to
+        </label>
+
+        <select id="targetLanguage"></select>
+
+      </div>
+
+    </div>
+
+
+    <!-- TRANSLATOR -->
+
+    <div class="translation-grid">
+
+      <!-- INPUT -->
+
+      <article class="panel">
+
+        <div class="panel-top">
+
+          <span class="panel-label">
+            Your text
+          </span>
+
+          <span
+            class="char-count"
+            id="charCount"
+          >
+            0 / 5000
+          </span>
+
+        </div>
+
+
+        <textarea
+          id="sourceText"
+          maxlength="5000"
+          placeholder="Enter text to translate..."
+        ></textarea>
+
+
+        <div class="input-tools">
+
+          <button
+            class="tool-btn"
+            id="voiceBtn"
+          >
+            🎙 Voice
+          </button>
+
+
+          <button
+            class="tool-btn"
+            id="clearInputBtn"
+          >
+            Clear
+          </button>
+
+
+          <button
+            class="translate-btn"
+            id="translateBtn"
+          >
+            <span>Translate</span>
+            <span>→</span>
+          </button>
+
+        </div>
+
+
+        <p
+          class="voice-status"
+          id="voiceStatus"
+        ></p>
+
+      </article>
+
+
+      <!-- OUTPUT -->
+
+      <article class="panel">
+
+        <div class="panel-top">
+
+          <span class="panel-label">
+            Translation
+          </span>
+
+
+          <div class="output-actions">
+
+            <button
+              class="mini-btn"
+              id="speakBtn"
+              disabled
+              title="Listen"
+            >
+              🔊
+            </button>
+
+
+            <button
+              class="mini-btn"
+              id="copyBtn"
+              disabled
+              title="Copy"
+            >
+              ⧉
+            </button>
+
+
+            <button
+              class="mini-btn"
+              id="favoriteBtn"
+              disabled
+              title="Favorite"
+            >
+              ☆
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="translation-result empty"
+          id="translationResult"
+        >
+
+          <div class="result-placeholder">
+
+            <div class="placeholder-icon">
+              文
+            </div>
+
+            <p>
+              Your translation will appear here.
+            </p>
+
+            <small>
+              Enter text and choose your languages.
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="result-meta"
+          id="resultMeta"
+        ></div>
+
+      </article>
+
+    </div>
+
+
+    <div class="api-note">
+      ● Translation powered by MyMemory. Internet connection required.
+    </div>
+
+  </section>
+
+
+  <!-- FEATURES -->
+
+  <section class="feature-strip">
+
+    <div>
+      <span>🎙</span>
+      <strong>Voice input</strong>
+      <small>Speak naturally</small>
+    </div>
+
+    <div>
+      <span>🔊</span>
+      <strong>Text to speech</strong>
+      <small>Listen instantly</small>
+    </div>
+
+    <div>
+      <span>★</span>
+      <strong>Favorites</strong>
+      <small>Save useful phrases</small>
+    </div>
+
+    <div>
+      <span>☁</span>
+      <strong>Local storage</strong>
+      <small>Your data stays local</small>
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- SIDE DRAWER -->
+
+<aside
+  class="drawer"
+  id="drawer"
+  aria-hidden="true"
+>
+
+  <div
+    class="drawer-backdrop"
+    id="drawerBackdrop"
+  ></div>
+
+
+  <div class="drawer-content">
+
+    <div class="drawer-header">
+
+      <div>
+
+        <p
+          class="eyebrow"
+          id="drawerEyebrow"
+        >
+          SAVED
+        </p>
+
+        <h2 id="drawerTitle">
+          History
+        </h2>
+
+      </div>
+
+
+      <button
+        class="close-btn"
+        id="drawerClose"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="drawer-toolbar">
+
+      <span id="drawerCount">
+        0 items
+      </span>
+
+      <button
+        class="danger-link"
+        id="clearDrawerBtn"
+      >
+        Clear all
+      </button>
+
+    </div>
+
+
+    <div
+      class="drawer-list"
+      id="drawerList"
+    ></div>
+
+  </div>
+
+</aside>
+
+
+<!-- CONFIRMATION MODAL -->
+
+<div
+  class="modal-backdrop"
+  id="confirmModal"
+  aria-hidden="true"
+>
+
+  <div class="confirm-modal">
+
+    <div class="modal-icon">
+      !
+    </div>
+
+    <h3 id="modalTitle">
+      Are you sure?
+    </h3>
+
+    <p id="modalMessage">
+      This action cannot be undone.
+    </p>
+
+
+    <div class="modal-actions">
+
+      <button
+        class="modal-btn secondary"
+        id="modalCancel"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="modal-btn danger"
+        id="modalConfirm"
+      >
+        Confirm
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+  class="toast"
+  id="toast"
+></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
